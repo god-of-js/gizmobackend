@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const user = require('../controllers/user.js')
 // const {isAuthenticated} = require('../middleware')
-
-router.post('/register', user.register)
+const make = require('../services/make')
+router.post('/register', make(user.register))
 module.exports = router

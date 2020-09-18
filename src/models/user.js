@@ -23,9 +23,19 @@ const schema = new mongoose.Schema({
         unique: true,
         required: "you must provide a phone number"
     },
+    verificationDetails: {
+        type: Object,
+        required: 'You must provide verificatio details.'
+    },
+    verified: {
+        type: Boolean,
+        unique: true,
+        required: "you must provide a phone number"
+    },
     password: {
         type: String,
         minlength: 8,
         required: 'You must provide a password with min length of 8'
     }
 })
+module.exports = mongoose.model('User', schema)
