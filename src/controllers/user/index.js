@@ -1,8 +1,8 @@
-const User = require('../models/user')
-const Token = require('../services/tokens')
-const base = require('../base')
-const { sms } = require('../services/twilliomessages')
-const { generateRandom, generateAlphaNumeric } = require('../services/helpers')
+const User = require('../../models/user')
+const Token = require('../../services/tokens')
+const base = require('../../base')
+const { sms } = require('../../services/twilliomessages')
+const { generateRandom, generateAlphaNumeric } = require('../../services/helpers')
 const client = require('twilio');
 // const { delete } = require('../routes')
 module.exports.register = async (req) => {

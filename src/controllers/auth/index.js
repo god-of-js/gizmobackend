@@ -1,6 +1,6 @@
-const User = require('../models/user');
-const base = require('../base');
-const Token = require('../services/tokens');
+const User = require('../../models/user');
+const base = require('../../base');
+const Token = require('../../services/tokens');
 
 module.exports.login = async (res) => {
     const {email, password} = res.body;
