@@ -1,6 +1,5 @@
-const c = require("../data/collections");
-// const User = require('../models/user');
-// const tokeniser = require("../services/tokens.js");
+const User = require('../models/user');
+const tokeniser = require("../services/tokens.js");
 
 async function isAuthenticated(req, res, next) {
   if (!req.get("Authorization") ||!req.get("Authorization").startsWith("Bearer "))

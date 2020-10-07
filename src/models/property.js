@@ -2,11 +2,7 @@ const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
     type: {
         type: String,
-        minlength: 2,
         required: "you must provide type of house with minimum length of 4"
-    },
-    reason: {
-        type: String,
     },
     location: {
         type: Object,
@@ -22,6 +18,25 @@ const schema = new mongoose.Schema({
     images: {
         type: Array,
         required: "At least one image of the property must be provided."
+    },
+    price: {
+        type: Number,
+        required: "Price must be provided."
+    },
+    state: {
+        type: String,
+        required: "State must be provided."
+    },
+    landmark: {
+        type: String,
+        required: "A close landmark must me given."
+    },
+    extraComment: {
+        type: String
+    },
+    ownerId: {
+        type: String,
+        required: "owner's Id is required."
     }
 })
 
