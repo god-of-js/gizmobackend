@@ -10,9 +10,34 @@ npm install
 npm run watch
 ```
 
-### 
+### Register
 ```
-npm run watch
+POST /api/v1/user/register
+{
+    email: "",
+    password: "",
+    phone: "",
+    name: ""
+  }
+
 ```
 
+### Login
+```
+POST /api/v1/auth/login
+{
+    email: "",
+    password: "",
+  }
 
+```
+
+### Add property
+```
+POST /api/v1/property/add-property
+{
+    email: "",
+    password: "",
+  }
+
+```
