@@ -1,10 +1,11 @@
 const router = require("express").Router();
-const sellProperty = require('../controllers/seller/property.js')
-const upload = require('multer')()
+const property = require('../controllers/seller/property.js')
 const { isAuthenticated } = require('../middleware')
 const make = require('../services/make')
 router.post('/add-property',
-upload.array("media"),
-isAuthenticated,
-make(sellProperty.addProperty))
+    isAuthenticated,
+    make(property.addProperty))
+router.get('/fetch-properties',
+    isAuthenticated,
+    make(property.getProperties))
 module.exports = router

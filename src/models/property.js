@@ -40,4 +40,4 @@ const schema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("property", schema)
+module.exports = mongoose.model("Property", schema)
