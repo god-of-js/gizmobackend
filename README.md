@@ -49,7 +49,7 @@ GET /api/v1/property/fetch-properties
   }
 
 ```
-## Response 
+#### Response 
 ```
 data: [
   {
