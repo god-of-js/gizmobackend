@@ -16,7 +16,7 @@ module.exports.login = async (res) => {
         phone: user.phone,
         purpose: 'Verification'
     },
-        { expiresIn: '7d', issuer: 'Blue-streak' }
+        { expiresIn: '7d', issuer: 'gizmo' }
     )
     delete user.password
     return new base.Response(200, {

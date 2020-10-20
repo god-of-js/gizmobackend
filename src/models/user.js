@@ -7,7 +7,6 @@ const schema = new mongoose.Schema({
     },
     email: {
         type: String,
-        minlength: 5,
         required: "you must provide an email",
         unique: true,
         validate: {
@@ -20,15 +19,6 @@ const schema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        unique: true,
-        required: "you must provide a phone number"
-    },
-    verificationDetails: {
-        type: Object,
-        required: 'You must provide verificatio details.'
-    },
-    verified: {
-        type: Boolean,
         unique: true,
         required: "you must provide a phone number"
     },

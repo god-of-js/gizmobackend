@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-var mongoDb = 'mongodb://localhost/streak'
+var mongoDb = 'mongodb://localhost/gizmo'
 mongoose.connect(mongoDb, { useNewUrlParser: true, useUnifiedTopology: true });
 module.exports = mongoose.connection
 mongoose.connection.on("error", console.error.bind(console, "connection error:"));
