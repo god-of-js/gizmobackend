@@ -20,11 +20,24 @@ module.exports.addProperty = async (res) => {
 }
 module.exports.getProperties = async (request) => {
     const { id } = request.payload
-    if (!id) throw new base.ResponseError(400, "Id of uer must be provided.")
+
+    console.log(request.url)
+    if (!id) throw new base.ResponseError(400, "Id of user must be provided.")
     const properties = await Property.find({ ownerId: id }).exec();
     return new base.Response(201, {
         message: "Properties fetch successful",
         error: false,
         data: properties
+    })
+}
+module.exports.getProperty = async (request) => {
+    const id = request.params.id;
+    if (!id) throw new base.ResponseError(400, "Id of user must be provided.")
+    const property = await Property.findOne({_id: id});
+    if(!property) throw new base.ResponseError(404, "Property not found")
+    return new base.Response(201, {
+        message: "Property found",
+        error: false,
+        data: property
     })
 }
