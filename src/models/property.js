@@ -37,6 +37,22 @@ const schema = new mongoose.Schema({
     ownerId: {
         type: String,
         required: "owner's Id is required."
+    },
+    furnishing: {
+        type: String
+    },
+    bathrooms: {
+        type: String
+    },
+    condition: {
+        type: String
+    },
+    parkingSpace: {
+        type: String
+    },
+    createdAt: {
+        type: Date,
+        required: "You must provide date"
     }
 })
 
