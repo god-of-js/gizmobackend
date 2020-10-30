@@ -1,28 +1,7 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1
   heroku: circleci/heroku@0.0.10
 workflows:
   heroku_deploy:
     jobs:
-      - heroku/deploy-via-git: # Use the pre-configured job
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
-jobs:
-  build:
-    docker:
-      - image: circleci/node:10.16.0
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: install-npm-dependencies
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
+      - heroku/deploy-via-git
