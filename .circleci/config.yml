@@ -1,12 +1,10 @@
 version: 2.1
 orbs:
-  coveralls: coveralls/coveralls@1.0.6
   node: circleci/node@1.1
   heroku: circleci/heroku@0.0.10
 workflows:
   heroku_deploy:
     jobs:
-      - build
       - heroku/deploy-via-git: # Use the pre-configured job
           requires:
             - build
@@ -28,7 +26,3 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run: # run tests
-          name: Build
-          command: npm run start
-      # - coveralls/upload
