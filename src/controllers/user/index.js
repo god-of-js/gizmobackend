@@ -19,7 +19,6 @@ module.exports.register = async (req) => {
         phone,
         createdAt: Date.now()
     })
-    
     await user.save().catch((e) => {
         console.log(e);
         throw new base.ResponseError(400, e.message)

@@ -11,4 +11,8 @@ router.get('/fetch-properties',
 router.get('/fetch-property/:id',
     isAuthenticated,
     make(property.getProperty))
+router.get('/fetch-all-properties/:page',
+    make(property.getAllProperties))
+router.delete('/delete-property',
+    make(property.deleteProperty))
 module.exports = router

@@ -1,3 +1,4 @@
+const { request } = require("express");
 const base = require("../../base");
 const Property = require("../../models/property")
 module.exports.addProperty = async (res) => {
@@ -28,7 +29,7 @@ module.exports.addProperty = async (res) => {
         message = "Property added successfully"
         property = new Property({ type, size, noOfRooms, createdAt: Date.now(), price, state, landmark, location, images, ownerId, extraComment, furnishing, bathrooms, condition, parkingSpace });
     }
-    // await property.save().catch(e => { throw new base.ResponseError(400, e.message)})
+    await property.save().catch(e => { throw new base.ResponseError(400, e.message) })
     return new base.Response(201, {
         message: message,
         error: false
@@ -53,5 +54,26 @@ module.exports.getProperty = async (request) => {
         message: "Property found",
         error: false,
         data: property
+    })
+}
+module.exports.deleteProperty = async (request) => {
+    const {propId, ownerId} = request.body;
+    let id = propId;
+    const owner = await Property.find({_id: id})
+    if(owner[0].ownerId !== ownerId) throw new base.ResponseError(400, "You do not have the priviledge to delete this property")
+    const property = await Property.findByIdAndDelete(id)
+    .catch(err => {throw new base.ResponseError(404, err.message)})
+    return new base.Response(201, {
+        message: "Property deleted",
+        error: false
+    })
+}
+module.exports.getAllProperties = async request => {
+
+    const properties = await Property.find({})
+    return new base.Response(201, {
+        message: "Properties fetch successful",
+        error: false,
+        data: properties.slice(request.params.page, 20)
     })
 }
