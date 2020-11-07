@@ -54,8 +54,8 @@ GET /api/v1/property/fetch-properties
 data: [
   {
     images: [
-      'http://res.cloudinary.com/dh8mksait/image/upload/v1602530011/isnabzpnzo4gm8w1nxjx.png',
-      'http://res.cloudinary.com/dh8mksait/image/upload/v1602530014/asjd0bsyfn4fksn6dhy1.png'
+      'http://res.cloudinary.com/upload__preset/image/upload/v1602530011/isnabzpnzo4gm8w1nxjx.png',
+      'http://res.cloudinary.com/upload__preset/image/upload/v1602530014/asjd0bsyfn4fksn6dhy1.png'
     ],
     _id: 5f84aade6c25341a4018426d,
     type: 'duplez',

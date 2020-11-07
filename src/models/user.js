@@ -5,6 +5,9 @@ const schema = new mongoose.Schema({
         minlength: 1,
         required: "you must provide a name"
     },
+    avatar: {
+        type: String
+    },
     email: {
         type: String,
         required: "you must provide an email",

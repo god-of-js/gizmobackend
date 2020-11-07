@@ -1,10 +1,10 @@
 const User = require('../../models/user')
+const Property = require('../../models/property')
 const Token = require('../../services/tokens')
 const base = require('../../base')
-const { sms } = require('../../services/twilliomessages')
+// const { sms } = require('../../services/twilliomessages')
 // const { generateRandom, generateAlphaNumeric } = require('../../services/helpers')
 const client = require('twilio');
-// const { delete } = require('../routes')
 module.exports.register = async (req) => {
     const { name, email, phone, password } = req.body;
     if (!name || !email || !phone, !password) throw new base.ResponseError(400, 'Name, email, phone and password are compulsory fields')
@@ -42,5 +42,35 @@ module.exports.register = async (req) => {
         data,
         error: false,
         jwt
+    })
+}
+module.exports.deleteAccount = async (req) => {
+    const id = req.params.id;
+    const user = User.findByIdAndDelete(id).catch(err => {
+        throw new base.ResponseError(400, err.message)
+    })
+    const property = Property.deleteMany({ ownerId: id }).catch(err => {
+        throw new base.ResponseError(400, err.message)
+    })
+
+    return new base.Response(201, {
+        message: "Account created successfully",
+        data,
+        error: false,
+        jwt
+    })
+}
+module.exports.updateAvatar = async (req) => {
+    const { id, avatar } = req.body;
+    if (!id) throw new base.ResponseError(400, "User Id must be provided")
+    if (!avatar) throw new base.ResponseError(400, "Avatar must be provided")
+     User.findByIdAndUpdate({ _id: id }, { avatar }).catch(err => {
+        throw new base.ResponseError(400, err.message)
+    })
+    const user = await User.findById(id).exec()
+    return new base.Response(201, {
+        message: "Avatar added successfully",
+        error: false,
+        data: user
     })
 }
