@@ -7,7 +7,7 @@ const base = require('../../base')
 const client = require('twilio');
 module.exports.register = async (req) => {
     const { name, email, phone, password } = req.body;
-    if (!name || !email || !phone, !password) throw new base.ResponseError(400, 'Name, email, phone and password are compulsory fields')
+    if (!name || !email || !phone || !password) throw new base.ResponseError(400, 'Name, email, phone and password are compulsory fields')
     const emailExists = await User.findOne({ email })
     const existsNum = await User.findOne({ phone })
     if (emailExists !== null) throw new base.ResponseError(400, 'This email exists in our database already. Try signing in or recovering password')
