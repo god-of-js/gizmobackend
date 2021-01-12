@@ -7,6 +7,9 @@
     "start": "node src",
     "watch": "nodemon src"
   },
+  "engines": {
+    "node": "12.19.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/god-of-js/houseapp-backend.git"
